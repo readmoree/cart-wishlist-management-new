@@ -7,17 +7,17 @@ EXPOSE 443
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
-COPY ["CartWishlistService.csproj", "./"]
-RUN dotnet restore "CartWishlistService.csproj"
+COPY ["CartService.csproj", "./"]
+RUN dotnet restore "CartService.csproj"
 COPY . .
-RUN dotnet build "CartWishlistService.csproj" -c Release -o /app/build
+RUN dotnet build "CartService.csproj" -c Release -o /app/build
 
 # Publish stage
 FROM build AS publish
-RUN dotnet publish "CartWishlistService.csproj" -c Release -o /app/publish
+RUN dotnet publish "CartService.csproj" -c Release -o /app/publish
 
 # Final stage
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CartWishlistService.dll"]
+ENTRYPOINT ["dotnet", "CartService.dll"]
