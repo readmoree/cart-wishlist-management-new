@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "WishListService\\CartWishlistService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "CartService\\CartService.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
